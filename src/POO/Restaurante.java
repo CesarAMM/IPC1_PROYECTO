@@ -48,5 +48,15 @@ public class Restaurante {
         this.load = load;
     }
     
+    @Override
+    public String toString(){
+        
+        return ""
+                + "\n\tNombre: " + name
+                + "\n\tDirrecion: " + address
+                + "\n\tTelefono: " + phone
+                + "\n\tLoad: " + load;
+    }
+    
     
 }

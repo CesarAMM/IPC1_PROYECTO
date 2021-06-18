@@ -75,4 +75,9 @@ public class Producto implements Serializable{
         this.ingredientes = ingredientes;
     }
     
+    @Override
+    public String toString(){
+        return "Producto: " + this.name + "\t\t Costo: " + this.cost +"\t\t Precio: " + this.price +"\t\t Descripcion: " + this.description +"\n";
+    }
+    
 }

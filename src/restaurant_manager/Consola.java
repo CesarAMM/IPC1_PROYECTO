@@ -124,7 +124,7 @@ public class Consola {
     
     public static String Fecha(){
         Calendar fecha = new GregorianCalendar();
-        String mes = "" + fecha.get(Calendar.MONTH) +1;
+        String mes = "" + (fecha.get(Calendar.MONTH) +1);
         String dia = "" + fecha.get(Calendar.DATE);
         String ayo = "" + fecha.get(Calendar.YEAR);
         String hora = "" + fecha.get(Calendar.HOUR);
@@ -140,7 +140,7 @@ public class Consola {
         addToEndFile(Fecha() +"\t"+orign+":\t"+commit, "PruebasProyecto\\errors.log");
     }
     public static void InsertNewLog(String orign, String commit){
-        
         addToEndFile(Fecha() +"\t"+orign+":\t"+commit, "PruebasProyecto\\log.log");
-    }    
+    }
+    
 }

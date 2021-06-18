@@ -90,4 +90,94 @@ public class Cesar_Funciones {
         
     }
     
+    public static void Listar(ArrayList objeto){
+        for (Object object : objeto) {
+            System.out.print(object.toString());
+        }
+    }
+    
+    public static void MostrarUsuario(){
+        boolean buscador = true;
+        String usuariodelete = Consola.inputString("\tIngrese el Usuario a eliminar\n\t-->");
+        for (Usuario usuario : Restaurant_Manager.usuarios) {
+            if(usuario.getUsername().equals(usuariodelete)){
+                usuario.toString();
+                buscador = false;
+                break;
+            }
+        }
+        if(buscador == true){
+            System.out.println("***   El usuario '"+ usuariodelete+"' no existe.   ***");
+            
+        }
+    }
+    
+    public static void EliminarUsuario(String User) {
+        boolean buscador = true;
+        String usuariodelete = Consola.inputString("\tIngrese el Usuario a eliminar\n\t-->");
+        for (Usuario usuario : Restaurant_Manager.usuarios) {
+            if(usuario.getUsername().equals(usuariodelete)){
+                Restaurant_Manager.usuarios.remove(usuario);
+                buscador = false;
+                break;
+            }
+        }
+        if(buscador){
+            System.out.println("\t***   No se encontro el Usuario   ***");
+        }else{
+            Consola.InsertNewLog(User, "Elimino el usuario '"+usuariodelete+"'");
+        }
+    }
+    
+    public static void EliminarProducto(String User) {
+        boolean buscador = true;
+        int id = Consola.inputInt("\tIngrese el Id del producto a eliminar\n\t-->");
+        for (Producto producto : Restaurant_Manager.productos) {
+            if(producto.getId() == id){
+                Restaurant_Manager.productos.remove(producto);
+                buscador = false;
+                break;
+            }
+        }
+        if(buscador){
+            System.out.println("\t***   No se encontro el Producto  ***");
+        }else{
+            Consola.InsertNewLog(User, "Elimino el producto con el Id: '"+id+"'");
+        }
+    }
+    
+    public static void EliminarCliente(String User) {
+        boolean buscador = true;
+        int id = Consola.inputInt("\tIngrese el Id del Cliente a eliminar\n\t-->");
+        for (Cliente cliente : Restaurant_Manager.clientes) {
+            if(cliente.getId() == id){
+                Restaurant_Manager.clientes.remove(cliente);
+                buscador = false;
+                break;
+            }
+        }
+        if(buscador){
+            System.out.println("\t***   No se encontro el Cliente  ***");
+        }else{
+            Consola.InsertNewLog(User, "Elimino el cliente con el Id: '"+id+"'");
+        }
+    }
+    
+    public static void EliminarFactura(String User) {
+        boolean buscador = true;
+        int id = Consola.inputInt("\tIngrese el Id de la factura a eliminar\n\t-->");
+        for (Factura factura : Restaurant_Manager.facturas) {
+            if(factura.getClient()== id){
+                Restaurant_Manager.facturas.remove(factura);
+                buscador = false;
+                break;
+            }
+        }
+        if(buscador){
+            System.out.println("\t***   No se encontro la Factura  ***");
+        }else{
+            Consola.InsertNewLog(User, "Elimino La factura con el Id: '"+id+"'");
+        }
+    }
+    
 }

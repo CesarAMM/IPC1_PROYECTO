@@ -40,5 +40,4 @@ public class Ingrediente implements Serializable{
         this.units = units;
     }
     
-    
 }

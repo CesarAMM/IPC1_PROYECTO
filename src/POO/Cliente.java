@@ -60,4 +60,8 @@ public class Cliente implements Serializable{
         this.nit = nit;
     }
     
+    @Override
+    public String toString(){
+        return "Id: " + this.id + "\tNombre: " + this.name +"\t\t Direccion: "+ this.address + "\t\t Nit: "+ this.nit +"\n";
+    }
 }
