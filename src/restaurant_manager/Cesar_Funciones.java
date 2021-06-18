@@ -7,8 +7,8 @@ import java.util.ArrayList;
 public class Cesar_Funciones {
     
     public static Restaurante InitDownloadData(){
-        String paht_json = "C:\\Users\\cesar.monroy\\Desktop\\ipc\\PruebasProyecto\\Json\\";//Para ir a buscar los datos del Json
-        String paht_bin = "C:\\Users\\cesar.monroy\\Desktop\\ipc\\PruebasProyecto\\Bin\\";//Para ir a buscar datos Binarios
+        String paht_json = "PruebasProyecto\\Json\\";//Para ir a buscar los datos del Json
+        String paht_bin = "PruebasProyecto\\Bin\\";//Para ir a buscar datos Binarios
         //Iniciamos con el config.json
         String config = Consola.readFile(paht_json + "config.json");
         Gson gson = new Gson();

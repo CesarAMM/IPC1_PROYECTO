@@ -122,7 +122,7 @@ public class Consola {
         }
     }
     
-    private static String Fecha(){
+    public static String Fecha(){
         Calendar fecha = new GregorianCalendar();
         String mes = "" + fecha.get(Calendar.MONTH) +1;
         String dia = "" + fecha.get(Calendar.DATE);
@@ -137,10 +137,10 @@ public class Consola {
     }
     
     public static void InsertNewError(String orign, String commit){
-        addToEndFile(Fecha() +"\t"+orign+":\t"+commit, "C:\\Users\\cesar.monroy\\Desktop\\ipc\\PruebasProyecto\\errors.log");
+        addToEndFile(Fecha() +"\t"+orign+":\t"+commit, "PruebasProyecto\\errors.log");
     }
     public static void InsertNewLog(String orign, String commit){
         
-        addToEndFile(Fecha() +"\t"+orign+":\t"+commit, "C:\\Users\\cesar.monroy\\Desktop\\ipc\\PruebasProyecto\\log.log");
+        addToEndFile(Fecha() +"\t"+orign+":\t"+commit, "PruebasProyecto\\log.log");
     }
 }
