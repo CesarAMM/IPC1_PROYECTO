@@ -142,6 +142,5 @@ public class Consola {
     public static void InsertNewLog(String orign, String commit){
         
         addToEndFile(Fecha() +"\t"+orign+":\t"+commit, "PruebasProyecto\\log.log");
-    }
-    
+    }    
 }
