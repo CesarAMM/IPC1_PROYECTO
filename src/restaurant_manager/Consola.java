@@ -1,13 +1,17 @@
 package restaurant_manager;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 public class Consola {
@@ -94,5 +98,49 @@ public class Consola {
             }
         }
         return content.toString();
+    }
+    
+    private static void addToEndFile(String data, String paht) {
+        FileWriter flwriter = null;
+        try {
+            flwriter = new FileWriter(paht, true); // True indica que se va a agregar datos al final
+            BufferedWriter bfwriter = new BufferedWriter(flwriter);
+            // Escribe los datos en el archivo
+            bfwriter.write(data + "\n");
+            bfwriter.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (flwriter != null) {
+                try {
+                    flwriter.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+    
+    private static String Fecha(){
+        Calendar fecha = new GregorianCalendar();
+        String mes = "" + fecha.get(Calendar.MONTH) +1;
+        String dia = "" + fecha.get(Calendar.DATE);
+        String ayo = "" + fecha.get(Calendar.YEAR);
+        String hora = "" + fecha.get(Calendar.HOUR);
+        String min = "" + fecha.get(Calendar.MINUTE);
+        if(Integer.parseInt(mes) < 10){mes = "0"+mes;}
+        if(Integer.parseInt(dia) < 10){dia = "0"+dia;}
+        if(Integer.parseInt(hora) < 10){hora = "0"+hora;}
+        if(Integer.parseInt(min) < 10){min = "0"+min;}
+        return dia+"/"+mes+"/"+ayo +" " +hora+":"+min;
+    }
+    
+    public static void InsertNewError(String orign, String commit){
+        addToEndFile(Fecha() +"\t"+orign+":\t"+commit, "C:\\Users\\cesar.monroy\\Desktop\\ipc\\PruebasProyecto\\errors.log");
+    }
+    public static void InsertNewLog(String orign, String commit){
+        
+        addToEndFile(Fecha() +"\t"+orign+":\t"+commit, "C:\\Users\\cesar.monroy\\Desktop\\ipc\\PruebasProyecto\\log.log");
     }
 }
