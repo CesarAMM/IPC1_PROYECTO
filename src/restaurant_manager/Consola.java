@@ -143,4 +143,5 @@ public class Consola {
         
         addToEndFile(Fecha() +"\t"+orign+":\t"+commit, "PruebasProyecto\\log.log");
     }
+    
 }
