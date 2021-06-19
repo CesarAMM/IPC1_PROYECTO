@@ -16,7 +16,7 @@ public class Cesar_Funciones {
         if(restaurante.getLoad().equals("json")){
             CargaDatos_Json(paht_json);
         }else if(restaurante.getLoad().equals("bin")){
-            CargaDatos_Bin(paht_bin);
+            CargaDatos_Bin();
         }
         return restaurante;
     }
@@ -86,8 +86,12 @@ public class Cesar_Funciones {
         }
     }
     
-    private static void CargaDatos_Bin(String paht){
-        
+    private static void CargaDatos_Bin(){
+        String paht =  "PruebasProyecto\\Bin\\";
+        Restaurant_Manager.usuarios = (ArrayList<Usuario>) Consola.deserialize(paht+ "users.ipcrm");
+        Restaurant_Manager.clientes = (ArrayList<Cliente>) Consola.deserialize(paht+ "clients.ipcrm");
+        Restaurant_Manager.productos = (ArrayList<Producto>) Consola.deserialize(paht+ "products.ipcrm");
+        Restaurant_Manager.facturas = (ArrayList<Factura>) Consola.deserialize(paht+ "invoices.ipcrm");
     }
     
     public static void Listar(ArrayList objeto){
@@ -228,4 +232,23 @@ public class Cesar_Funciones {
         }
     }
     
+    public static void SerealizarDatos(){
+        String paht =  "PruebasProyecto\\Bin\\";
+        Consola.serialize(paht + "users.ipcrm", Restaurant_Manager.usuarios);
+        Consola.serialize(paht + "clients.ipcrm", Restaurant_Manager.clientes);
+        Consola.serialize(paht + "products.ipcrm", Restaurant_Manager.productos);
+        Consola.serialize(paht + "invoices.ipcrm", Restaurant_Manager.facturas);
+    }
+
+    static void JsonDatos() {
+        Gson gson = new Gson();
+        String gson_usuarios = gson.toJson(Restaurant_Manager.usuarios);
+        String gson_clientes = gson.toJson(Restaurant_Manager.clientes);
+        String gson_productos = gson.toJson(Restaurant_Manager.productos);
+        String gson_Facturas = gson.toJson(Restaurant_Manager.facturas);
+        Consola.writeFile(gson_usuarios,"PruebasProyecto\\Json\\users.json" );
+        Consola.writeFile(gson_clientes,"PruebasProyecto\\Json\\clients.json" );
+        Consola.writeFile(gson_Facturas,"PruebasProyecto\\Json\\invoices.json" );
+        Consola.writeFile(gson_productos,"PruebasProyecto\\Json\\products.json" );
+    }
 }

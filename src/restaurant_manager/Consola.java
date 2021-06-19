@@ -121,6 +121,27 @@ public class Consola {
             }
         }
     }
+    public static void writeFile(String data, String paht) {
+        FileWriter flwriter = null;
+        try {
+            flwriter = new FileWriter(paht);
+            BufferedWriter bfwriter = new BufferedWriter(flwriter);
+            // Escribe los datos en el archivo
+            bfwriter.write(data + "\n");
+            bfwriter.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (flwriter != null) {
+                try {
+                    flwriter.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
     
     public static String Fecha(){
         Calendar fecha = new GregorianCalendar();

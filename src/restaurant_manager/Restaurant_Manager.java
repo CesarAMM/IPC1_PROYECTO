@@ -71,6 +71,7 @@ public class Restaurant_Manager {
                         break;
                     case 7:
                         System.out.println("**   Gracias Por ingresar   **");
+                        Consola.InsertNewLog(user, "Cerro Secion");
                         break;
                     default:
                         System.out.println("*** Has ingresado una opcion Fuera de Rango  ***");
@@ -204,10 +205,12 @@ public class Restaurant_Manager {
             index = Consola.inputInt("\tIngrese una Opcion\n\t-->");
             switch(index){
                 case 1:
-                    
+                    Cesar_Funciones.JsonDatos();
+                    Consola.InsertNewLog(user, "A guardado los datos en Formato JSON");
                     break;
                 case 2:
-                    
+                    Cesar_Funciones.SerealizarDatos();
+                    Consola.InsertNewLog(user, "A guardado los datos en Formato Binario");
                     break;
                 default:
                     System.out.println("*** Has ingresado una Opcion Fuera del rago   ****");
