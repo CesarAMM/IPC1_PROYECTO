@@ -99,7 +99,7 @@ public class Restaurant_Manager {
                     Cesar_Funciones.EliminarUsuario(user);
                     break;
                 case 3:
-                    Menu_Productos();
+                    Cesar_Funciones.MostrarUsuario(user);
                     break;
                 default:
                     System.out.println("*** Has ingresado una Opcion Fuera del rago   ****");
@@ -127,7 +127,7 @@ public class Restaurant_Manager {
                     Cesar_Funciones.EliminarProducto(user);
                     break;
                 case 3:
-                    Menu_Productos();
+                    Cesar_Funciones.MostrarProductos(user);
                     break;
                 default:
                     System.out.println("*** Has ingresado una Opcion Fuera del rago   ****");
@@ -155,7 +155,7 @@ public class Restaurant_Manager {
                     Cesar_Funciones.EliminarCliente(user);
                     break;
                 case 3:
-                    Menu_Productos();
+                    Cesar_Funciones.MostrarCliente(user);
                     break;
                 default:
                     System.out.println("*** Has ingresado una Opcion Fuera del rago   ****");
@@ -183,7 +183,7 @@ public class Restaurant_Manager {
                     Cesar_Funciones.EliminarFactura(user);
                     break;
                 case 3:
-                    Menu_Productos();
+                    Cesar_Funciones.MostrarFactura(user);
                     break;
                 default:
                     System.out.println("*** Has ingresado una Opcion Fuera del rago   ****");
