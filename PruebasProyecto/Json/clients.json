@@ -1,1 +1,9 @@
-[{"id":1,"name":"Cesar Mazariegos","address":"Zona 7 de Guatemala","phone":42625420,"nit":"52144-1"},{"id":2,"name":"Daniela Navas","address":"Zona 7 de Guatemala","phone":42625420,"nit":"52144-1"},{"id":3,"name":"Silvia Lopez","address":"Zona 7 de Guatemala","phone":42625420,"nit":"52144-1"},{"id":4,"name":"Adolfo Monroy","address":"Zona 7 de Guatemala","phone":42625420,"nit":"52144-1"}]
+[
+    {
+        "id": 1,
+        "name": "Darwin Arevalo",
+        "address": "Ciudad de Guatemala",
+        "phone": 42562365,
+        "nit": "5283282-3"
+    }
+]

@@ -1,4 +1,14 @@
 [
-    {"username":"camazariegos","password":"Dominos"},
-    {"username":"dnavas","password":"Pizza"}
+    {
+        "username": "alexizzarevalo",
+        "password": "helloworld"
+    },
+    {
+        "username": "dnavas",
+        "password": "dnavas"
+    },
+    {
+        "username": "camazariegos",
+        "password": "Pizza"
+    }
 ]

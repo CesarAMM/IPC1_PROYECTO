@@ -1,1 +1,16 @@
-[{"id":2,"name":"pizza","description":"Pizza Deluxe","cost":40.0,"price":50.0},{"id":3,"name":"pizza","description":"Pizza 5 Carnes","cost":40.0,"price":50.0}]
+[
+    {
+        "id": 1,
+        "name": "Pizza",
+        "description": "Pizza Hawaiana con queso",
+        "cost": 40,
+        "price": 50,
+        "ingredients": [
+            {
+                "name": "Piña",
+                "quantity": 1,
+                "units": "Unidades"
+            }
+        ]
+    }
+]

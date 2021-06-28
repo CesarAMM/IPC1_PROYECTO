@@ -4,15 +4,26 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Factura implements Serializable{
+    private int id;
     private int client;
     private String date;
     private ArrayList<Producto> products;
 
-    public Factura(int client, String date, ArrayList<Producto> products) {
+    public Factura(int id, int client, String date, ArrayList<Producto> products) {
+        this.id = id;
         this.client = client;
         this.date = date;
         this.products = products;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     
 
     public Factura() {

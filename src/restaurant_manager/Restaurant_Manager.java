@@ -2,6 +2,7 @@ package restaurant_manager;
 
 import POO.*;
 import java.util.ArrayList;
+import Views.*;
 
 public class Restaurant_Manager {
     public static ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
@@ -10,10 +11,13 @@ public class Restaurant_Manager {
     public static ArrayList<Producto> productos = new ArrayList<Producto>();
     private static String user = "";
     private static String pass = "";
-    private static Restaurante restaurante;
+    public static Restaurante restaurante;
+    public static Main main ;
     public static void main(String[] args) {
         restaurante = Cesar_Funciones.InitDownloadData();
-        Iniciar();
+        main = new Main();
+        main.setVisible(true);
+        
     }
     
     public static void Iniciar(){
