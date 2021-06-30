@@ -7,10 +7,12 @@ import javax.swing.JButton;
 public class Boton extends JButton{
     private String text;
     private int xpos, ypos;
-    private int xpix, ypix;
+    private int xpix, ypix, id; 
     private Font font;
     private Color text_Color, background;
-
+    
+    public Boton(){}
+    
     public Boton(String text, int xpos, int ypos, int xpix, int ypix, Font font, Color text_Color, Color background) {
         this.text = text;
         this.xpos = xpos;
@@ -26,7 +28,7 @@ public class Boton extends JButton{
         this.setBounds(xpos, ypos, xpix, ypix);
         this.setText(text);
     }
-
+    
     public Boton(String text, int xpos, int ypos, int xpix, int ypix, Font font) {
         this.text = text;
         this.xpos = xpos;
@@ -38,7 +40,32 @@ public class Boton extends JButton{
         this.setBounds(xpos, ypos, xpix, ypix);
         this.setText(text);
     }
+    
+    public Boton(String text,int id, int xpos, int ypos, int xpix, int ypix, Font font, Color text_Color, Color background) {
+        this.text = text;
+        this.xpos = xpos;
+        this.ypos = ypos;
+        this.xpix = xpix;
+        this.ypix = ypix;
+        this.font = font;
+        this.id = id;
+        this.text_Color = text_Color;
+        this.background = background;
+        this.setBackground(background);
+        this.setForeground(text_Color);
+        this.setFont(font);
+        this.setBounds(xpos, ypos, xpix, ypix);
+        this.setText(text);
+    }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public String getText() {
         return text;
     }

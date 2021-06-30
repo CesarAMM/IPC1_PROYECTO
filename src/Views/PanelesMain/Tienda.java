@@ -14,12 +14,16 @@ public class Tienda {
     private static Color rojo = new Color(247, 17, 17);
     private static Color gris = new Color(212, 204, 204);
     private static TextBox txtNameStore, txtaddressStore, txtPhoneStore, txtLoadStore;
+    private static Label namestore, addressstore, phonestore, loadstore;
+    private static Boton btn_edit, btn_save, btn_cancel;
+   
+    
     public static void IniciarComponentes_PanelTienda() {
         //Labels
-        Label namestore = new Label("Tienda:", 10, 15, 100, 15, f_nomal, false);
-        Label addressstore = new Label("Direccion:", 10, 41, 100, 15, f_nomal, false);
-        Label phonestore = new Label("Telefono:", 10, 67, 100, 15, f_nomal, false);
-        Label loadstore = new Label("Load:", 10, 93, 100, 15, f_nomal, false);
+        namestore = new Label("Tienda:", 10, 15, 100, 15, f_nomal, false);
+        addressstore = new Label("Direccion:", 10, 41, 100, 15, f_nomal, false);
+        phonestore = new Label("Telefono:", 10, 67, 100, 15, f_nomal, false);
+        loadstore = new Label("Load:", 10, 93, 100, 15, f_nomal, false);
         Views.Main.jpViews_Store.add(namestore);
         Views.Main.jpViews_Store.add(addressstore);
         Views.Main.jpViews_Store.add(phonestore);
@@ -34,9 +38,9 @@ public class Tienda {
         Views.Main.jpViews_Store.add(txtPhoneStore);
         Views.Main.jpViews_Store.add(txtLoadStore);
         //Botones
-        Boton btn_edit = new Boton("Editar", 255, 250, 100, 20, f_nomal, Color.BLACK, verde);
-        Boton btn_save = new Boton("Guardar", 255, 250, 100, 20, f_nomal, Color.BLACK, verde);
-        Boton btn_cancel = new Boton("Cancelar", 130, 250, 120, 20, f_nomal, Color.BLACK, rojo);
+        btn_edit = new Boton("Editar", 255, 250, 100, 20, f_nomal, Color.BLACK, verde);
+        btn_save = new Boton("Guardar", 255, 250, 100, 20, f_nomal, Color.BLACK, verde);
+        btn_cancel = new Boton("Cancelar", 130, 250, 120, 20, f_nomal, Color.BLACK, rojo);
         Views.Main.jpViews_Store.add(btn_edit);
         Views.Main.jpViews_Store.add(btn_save);
         Views.Main.jpViews_Store.add(btn_cancel);
@@ -61,6 +65,11 @@ public class Tienda {
                 btn_cancel.setVisible(false);
                 btn_save.setVisible(false);
                 HabilitarCampos(false);
+                stor.setAddress(txtaddressStore.getText());
+                stor.setName(txtNameStore.getText());
+                stor.setPhone(Integer.parseInt(txtPhoneStore.getText()));
+                stor.setLoad(txtLoadStore.getText());
+                restaurant_manager.Cesar_Funciones.JsonDatos(1);
             }
         });
         

@@ -11,7 +11,7 @@ public class Restaurant_Manager {
     public static ArrayList<Producto> productos = new ArrayList<Producto>();
     private static String user = "";
     private static String pass = "";
-    public static Restaurante restaurante;
+    public static Restaurante restaurante = new Restaurante("", "", 0, "");
     public static Main main ;
     public static void main(String[] args) {
         restaurante = Cesar_Funciones.InitDownloadData();
@@ -209,7 +209,7 @@ public class Restaurant_Manager {
             index = Consola.inputInt("\tIngrese una Opcion\n\t-->");
             switch(index){
                 case 1:
-                    Cesar_Funciones.JsonDatos();
+                    //Cesar_Funciones.JsonDatos();
                     Consola.InsertNewLog(user, "A guardado los datos en Formato JSON");
                     break;
                 case 2:

@@ -240,15 +240,29 @@ public class Cesar_Funciones {
         Consola.serialize(paht + "invoices.ipcrm", Restaurant_Manager.facturas);
     }
 
-    static void JsonDatos() {
+    public static void JsonDatos(int i) {
         Gson gson = new Gson();
-        String gson_usuarios = gson.toJson(Restaurant_Manager.usuarios);
-        String gson_clientes = gson.toJson(Restaurant_Manager.clientes);
-        String gson_productos = gson.toJson(Restaurant_Manager.productos);
-        String gson_Facturas = gson.toJson(Restaurant_Manager.facturas);
-        Consola.writeFile(gson_usuarios,"PruebasProyecto\\Json\\users.json" );
-        Consola.writeFile(gson_clientes,"PruebasProyecto\\Json\\clients.json" );
-        Consola.writeFile(gson_Facturas,"PruebasProyecto\\Json\\invoices.json" );
-        Consola.writeFile(gson_productos,"PruebasProyecto\\Json\\products.json" );
+        switch(i){
+            case 1:
+                String gson_store = gson.toJson(Restaurant_Manager.restaurante);
+                Consola.writeFile(gson_store, "PruebasProyecto\\Json\\config.json");
+                break;
+            case 2:
+                String gson_usuarios = gson.toJson(Restaurant_Manager.usuarios);
+                Consola.writeFile(gson_usuarios,"PruebasProyecto\\Json\\users.json" );
+                break;
+            case 3:
+                String gson_clientes = gson.toJson(Restaurant_Manager.clientes);
+                Consola.writeFile(gson_clientes,"PruebasProyecto\\Json\\clients.json" );
+                break;
+            case 4:
+                String gson_productos = gson.toJson(Restaurant_Manager.productos);
+                Consola.writeFile(gson_productos,"PruebasProyecto\\Json\\products.json" );
+                break;
+            case 5:
+                String gson_Facturas = gson.toJson(Restaurant_Manager.facturas);
+                Consola.writeFile(gson_Facturas,"PruebasProyecto\\Json\\invoices.json" );
+                break;
+        }
     }
 }

@@ -13,8 +13,9 @@ import javax.swing.JFrame;
 public class Main extends JFrame{
     public static Panel jpMain, jpLoguit, jpMenu, jpTitulo, 
             jpViews_Store, jpViews_Cliente, jpViews_Factura, jpViews_Producto, jpViews_User;
-    private static POO.Usuario LoggerUser;
-    
+    private static POO.Usuario LoggerUser = new POO.Usuario();
+    private static POO.Restaurante Store = Restaurant_Manager.restaurante;
+    public static Font Font_title = new Font(Font.DIALOG_INPUT, Font.BOLD, 20);
     public Font texto = new Font(Font.DIALOG_INPUT, Font.BOLD, 15);
     private static Color verde = new Color(58, 255, 0);
     private static Color rojo = new Color(247, 17, 17);
@@ -38,13 +39,13 @@ public class Main extends JFrame{
         jpMain.add(jpLoguit);
         
         //Contenedores Para el resto de cosas
-        jpTitulo = new Panel(5, 5, 585, 50, Color.white);
+        jpTitulo = new Panel(5, 5, 785, 50, Color.white);
         jpMenu = new Panel(5, 60, 150, 305, Color.white);
-        jpViews_Store = new Panel(160, 60, 430, 305, new Color(212, 204,204));
-        jpViews_Cliente = new Panel(160, 60, 430, 305, Color.white);
-        jpViews_Factura = new Panel(160, 60, 430, 305, Color.white);
-        jpViews_Producto = new Panel(160, 60, 430, 305, Color.white);
-        jpViews_User = new Panel(160, 60, 430, 400, Color.white);
+        jpViews_Store = new Panel(160, 60, 630, 305, new Color(212, 204,204));
+        jpViews_Cliente = new Panel(160, 60, 630, 305, Color.white);
+        jpViews_Factura = new Panel(160, 60, 630, 305, Color.white);
+        jpViews_Producto = new Panel(160, 60, 630, 305, Color.white);
+        jpViews_User = new Panel(160, 60, 630, 305, Color.white);
         
         jpMain.add(jpTitulo);
         jpMain.add(jpMenu);
@@ -63,15 +64,15 @@ public class Main extends JFrame{
         jpViews_Producto.setVisible(false);
         jpViews_User.setVisible(false);
         //Seccion para iniciar el restp de Componentes
+        IniciarComponentesMain();
         IniciarComponentesLoguit();
-        
     }
-    private Tienda v = new Tienda();
     private void IniciarComponentesMain() {
         Views.PanelesMain.Menu_Title.IniciarComponentes_Panelmenu();
         Views.PanelesMain.Menu_Title.IniciarComponentes_PanelTitulo();
         Views.PanelesMain.Tienda.IniciarComponentes_PanelTienda();
-        Views.PanelesMain.Cliente.IniciarComponentes_PanelCliente();
+        Views.PanelesMain.Cliente c = new Cliente();
+        c.IniciarComponentes_PanelCliente();
         Views.PanelesMain.Factura.IniciarComponentes_PanelFactura();
         Views.PanelesMain.Producto.IniciarComponentes_PanelProducto();
         Views.PanelesMain.Usuario.IniciarComponentes_PanelUsers();
@@ -116,12 +117,13 @@ public class Main extends JFrame{
                     }
                 }
                 if(estado == true && LoggerUser != null){
-                    IniciarComponentesMain();
+                    Views.PanelesMain.Menu_Title.label_User.setText(LoggerUser.getUsername());
+                    Views.PanelesMain.Menu_Title.label_titulo.setText("Restaurante Manager: " + Store.getName());
                     jpLoguit.setVisible(false);
                     jpMenu.setVisible(true);
                     jpTitulo.setVisible(true);
                     jpViews_Store.setVisible(true);
-                    Restaurant_Manager.main.setSize(600, 400);
+                    Restaurant_Manager.main.setSize(800, 400);
                     Consola.InsertNewLog(user, "Inicio Secion");
                 }else{
                     alert.setVisible(true);

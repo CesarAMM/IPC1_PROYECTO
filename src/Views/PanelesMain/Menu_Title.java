@@ -11,6 +11,7 @@ import restaurant_manager.Restaurant_Manager;
         
 public class Menu_Title {
     
+    public static Label label_User, label_titulo;
     public static void IniciarComponentes_Panelmenu(){
         Boton btn_Tienda = new Boton("Info. Tienda", 0, 18, 150, 25, new Font(Font.DIALOG_INPUT, Font.BOLD, 12));
         Boton btn_Cliente = new Boton("Clientes", 0, 44, 150, 25, new Font(Font.DIALOG_INPUT, Font.BOLD, 12));
@@ -24,8 +25,9 @@ public class Menu_Title {
         Views.Main.jpMenu.add(btn_Producto);
         Views.Main.jpMenu.add(btn_Usuario);
         Views.Main.jpMenu.add(btn_Salir);
-        Label user = new Label(Views.Main.getLoggerUser().getUsername(), 0, 0, 100, 15, new Font(Font.DIALOG_INPUT, Font.BOLD, 12), true);
-        Views.Main.jpMenu.add(user);
+        label_User = new Label(Views.Main.getLoggerUser().getUsername(), 0, 0, 100, 15, new Font(Font.DIALOG_INPUT, Font.BOLD, 12), true);
+        Views.Main.jpMenu.add(label_User);
+        
         btn_Salir.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
@@ -40,12 +42,67 @@ public class Menu_Title {
                 Views.Main.jpViews_User.setVisible(false);
                 Consola.InsertNewLog(Views.Main.getLoggerUser().getUsername(), "Ha Cerrado Sesion.");
                 Views.Main.setLoggerUser(null);
+                label_User.setText("");
+            }
+        });
+        
+        btn_Usuario.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                Views.Main.jpViews_Store.setVisible(false);
+                Views.Main.jpViews_Cliente.setVisible(false);
+                Views.Main.jpViews_Factura.setVisible(false);
+                Views.Main.jpViews_Producto.setVisible(false);
+                Views.Main.jpViews_User.setVisible(true);
+            }
+        });
+        btn_Producto.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                Views.Main.jpViews_Store.setVisible(false);
+                Views.Main.jpViews_Cliente.setVisible(false);
+                Views.Main.jpViews_Factura.setVisible(false);
+                Views.Main.jpViews_Producto.setVisible(true);
+                Views.Main.jpViews_User.setVisible(false);
+            }
+        });
+        
+        btn_Factura.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                Views.Main.jpViews_Store.setVisible(false);
+                Views.Main.jpViews_Cliente.setVisible(false);
+                Views.Main.jpViews_Factura.setVisible(true);
+                Views.Main.jpViews_Producto.setVisible(false);
+                Views.Main.jpViews_User.setVisible(false);
+            }
+        });
+        
+        btn_Cliente.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                Views.Main.jpViews_Store.setVisible(false);
+                Views.Main.jpViews_Cliente.setVisible(true);
+                Views.Main.jpViews_Factura.setVisible(false);
+                Views.Main.jpViews_Producto.setVisible(false);
+                Views.Main.jpViews_User.setVisible(false);
+            }
+        });
+        
+        btn_Tienda.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                Views.Main.jpViews_Store.setVisible(true);
+                Views.Main.jpViews_Cliente.setVisible(false);
+                Views.Main.jpViews_Factura.setVisible(false);
+                Views.Main.jpViews_Producto.setVisible(false);
+                Views.Main.jpViews_User.setVisible(false);
             }
         });
     }
-
+    
     public static void IniciarComponentes_PanelTitulo() {
-        Label titulo = new Label("Restaurante Manager: " +Restaurant_Manager.restaurante.getName() , 0, 0, 485, 50, new Font(Font.DIALOG_INPUT, Font.BOLD, 16), true);
-        Views.Main.jpTitulo.add(titulo);
+        label_titulo = new Label("Restaurante Manager: " +Restaurant_Manager.restaurante.getName() , 0, 0, 485, 50, new Font(Font.DIALOG_INPUT, Font.BOLD, 16), true);
+        Views.Main.jpTitulo.add(label_titulo);
     }
 }
