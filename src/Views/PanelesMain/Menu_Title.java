@@ -102,7 +102,7 @@ public class Menu_Title {
     }
     
     public static void IniciarComponentes_PanelTitulo() {
-        label_titulo = new Label("Restaurante Manager: " +Restaurant_Manager.restaurante.getName() , 0, 0, 485, 50, new Font(Font.DIALOG_INPUT, Font.BOLD, 16), true);
+        label_titulo = new Label("Restaurante Manager: " +Restaurant_Manager.restaurante.getName() , 0, 0, 685, 50, new Font(Font.DIALOG_INPUT, Font.BOLD, 18), true);
         Views.Main.jpTitulo.add(label_titulo);
     }
 }

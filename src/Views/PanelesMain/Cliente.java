@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -83,18 +84,50 @@ public class Cliente implements MouseListener{
     private void IniciarVentana(){
         FrameAdd ventana = new FrameAdd("Cliente", new Panel(Color.white));
         //Creacion de Labels
-        Label lname = new Label("Nombre:", 10, 10, 50, 20, new Font(Font.DIALOG_INPUT, Font.BOLD, 15), false);
+        Label lname = new Label("Nombre:", 10, 10, 100, 20, new Font(Font.DIALOG_INPUT, Font.BOLD, 15), false);
+        Label laddress = new Label("Direccion:", 10, 35, 100, 20, new Font(Font.DIALOG_INPUT, Font.BOLD, 15), false);
+        Label lphone = new Label("Phone:", 10, 60, 100, 20, new Font(Font.DIALOG_INPUT, Font.BOLD, 15), false);
+        Label lnit = new Label("Nit:", 10, 85, 100, 20, new Font(Font.DIALOG_INPUT, Font.BOLD, 15), false);
         ventana.getPanelGeneral().add(lname);
-        Label laddress = new Label("Direccion:", 10, 10, 50, 20, new Font(Font.DIALOG_INPUT, Font.BOLD, 15), false);
         ventana.getPanelGeneral().add(laddress);
-        Label lnit = new Label("Nit:", 10, 10, 50, 20, new Font(Font.DIALOG_INPUT, Font.BOLD, 15), false);
-        Label lphone = new Label("Phone:", 10, 10, 50, 20, new Font(Font.DIALOG_INPUT, Font.BOLD, 15), false);
         ventana.getPanelGeneral().add(lnit);
         ventana.getPanelGeneral().add(lphone);
         //Creacion de textbox
-        
+        TextBox txtname = new TextBox(105, 10, 150, 20, new Font(Font.DIALOG_INPUT, Font.BOLD, 15));
+        TextBox txtaddress = new TextBox(105, 35, 150, 20, new Font(Font.DIALOG_INPUT, Font.BOLD, 15));
+        TextBox txtphone = new TextBox(105, 60, 120, 20, new Font(Font.DIALOG_INPUT, Font.BOLD, 15));
+        TextBox txtnit = new TextBox(105, 85, 120, 20, new Font(Font.DIALOG_INPUT, Font.BOLD, 15));
+        ventana.getPanelGeneral().add(txtname);
+        ventana.getPanelGeneral().add(txtnit);
+        ventana.getPanelGeneral().add(txtphone);
+        ventana.getPanelGeneral().add(txtaddress);
+        //Crear Boton de guardato
+        Boton btnSave = new Boton("Guardar", 10, 120, 100, 20, new Font(Font.DIALOG_INPUT, Font.BOLD, 15));
+        ventana.getPanelGeneral().add(btnSave);
         //Mostrar la Ventana
         ventana.setVisible(true);
+        //Funcion del metodo Guaradar a un nuevo cliente
+        btnSave.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                if(!(txtname.getText().equals("") && txtnit.getText().equals("") && txtphone.getText().equals("") && txtaddress.getText().equals(""))){
+                    if(Consola.ValidarInt(txtphone.getText())){
+                        int id= Restaurant_Manager.clientes.get(Restaurant_Manager.clientes.size() -1).getId() +1;
+                        POO.Cliente auxClinete = new POO.Cliente(id, txtname.getText(), txtaddress.getText(), Integer.parseInt(txtphone.getText()), txtnit.getText());
+                        Restaurant_Manager.clientes.add(auxClinete);
+                        dtm.addRow(auxClinete.getVector());
+                        Cesar_Funciones.JsonDatos(3);
+                        ventana.setVisible(false);
+                    }else{
+                        JOptionPane.showMessageDialog(null,"En el telefono solo se aceptan numeros");
+                        txtphone.setText(null);
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(null, "Es obligatorio llenar todos los campos");
+                }
+            }
+        }
+        );
     }
    
 }

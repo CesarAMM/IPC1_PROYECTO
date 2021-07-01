@@ -20,6 +20,16 @@ public class TextBox extends JTextField{
         this.setFont(font);
         this.setBounds(xpos, ypos, xpix, ypix);
     }
+    public TextBox(int xpos, int ypos, int xpix, int ypix, Font font) {
+        this.xpos = xpos;
+        this.ypos = ypos;
+        this.xpix = xpix;
+        this.ypix = ypix;
+        this.limite = limite;
+        this.font = font;
+        this.setFont(font);
+        this.setBounds(xpos, ypos, xpix, ypix);
+    }
 
     public TextBox(String text, int xpos, int ypos, int xpix, int ypix, Font font, boolean disabled) {
         this.xpos = xpos;

@@ -36,6 +36,15 @@ public class Consola {
         return valor;
     }
     
+    public static boolean ValidarInt(String d){
+        try {
+            int i = Integer.parseInt(d);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    
     public static void strErrorFueraRango(){
         System.out.println("\n"
                 + "\t**********************************************\n"

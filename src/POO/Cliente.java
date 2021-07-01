@@ -19,6 +19,11 @@ public class Cliente implements Serializable{
         this.phone = phone;
         this.nit = nit;
     }
+    
+    public Object[] getVector(){
+        Object[] obj = {this.id, this.name, this.address, this.phone, this.nit};
+        return obj;
+    }
 
     public int getId() {
         return id;
