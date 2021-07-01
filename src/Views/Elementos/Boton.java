@@ -2,6 +2,7 @@ package Views.Elementos;
 
 import java.awt.Color;
 import java.awt.Font;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 public class Boton extends JButton{
@@ -10,10 +11,25 @@ public class Boton extends JButton{
     private int xpix, ypix, id; 
     private Font font;
     private Color text_Color, background;
+    private String ruta;
     
     public Boton(){}
+
+    public Boton(int xpos, int ypos, int xpix, int ypix, Color background, String ruta) {
+        this.xpos = xpos;
+        this.ypos = ypos;
+        this.xpix = xpix;
+        this.ypix = ypix;
+        this.background = background;
+        this.ruta = ruta;
+        this.setBackground(background);
+        this.setBounds(xpos, ypos, xpix, ypix);
+        this.setIcon(new ImageIcon(ruta));
+    }
+    
     
     public Boton(String text, int xpos, int ypos, int xpix, int ypix, Font font, Color text_Color, Color background) {
+        
         this.text = text;
         this.xpos = xpos;
         this.ypos = ypos;
