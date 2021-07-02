@@ -19,6 +19,7 @@ public class Cliente implements MouseListener{
     
     public static JTable tbl;
     public static DefaultTableModel dtm;
+    
     public void IniciarComponentes_PanelCliente(){
         //Inicianilizando Labels
         Label titulo = new Label("Seccion de Clientes", 0, 5, 630, 15, Views.Main.Font_title , true);
@@ -126,8 +127,8 @@ public class Cliente implements MouseListener{
                     JOptionPane.showMessageDialog(null, "Es obligatorio llenar todos los campos");
                 }
             }
-        }
-        );
+        });
     }
+    
    
 }

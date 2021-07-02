@@ -15,7 +15,12 @@ public class Factura implements Serializable{
         this.date = date;
         this.products = products;
     }
-
+    
+    public Object[] toVector(){
+        Object obj[] = {this.id, this.client, this.date, this.products};
+        return obj;
+    }
+    
     public int getId() {
         return id;
     }

@@ -166,6 +166,20 @@ public class Consola {
         return dia+"/"+mes+"/"+ayo +" " +hora+":"+min;
     }
     
+    public static String StrFecha(){
+        Calendar fecha = new GregorianCalendar();
+        String mes = "" + (fecha.get(Calendar.MONTH) +1);
+        String dia = "" + fecha.get(Calendar.DATE);
+        String ayo = "" + fecha.get(Calendar.YEAR);
+        String hora = "" + fecha.get(Calendar.HOUR);
+        String min = "" + fecha.get(Calendar.MINUTE);
+        if(Integer.parseInt(mes) < 10){mes = "0"+mes;}
+        if(Integer.parseInt(dia) < 10){dia = "0"+dia;}
+        if(Integer.parseInt(hora) < 10){hora = "0"+hora;}
+        if(Integer.parseInt(min) < 10){min = "0"+min;}
+        return ayo+"-"+mes+"-"+dia;
+    }
+    
     public static void InsertNewError(String orign, String commit){
         addToEndFile(Fecha() +"\t"+orign+":\t"+commit, "PruebasProyecto\\errors.log");
     }

@@ -12,5 +12,24 @@
                 "units": "Unidades"
             }
         ]
+    },
+    {
+        "id": 2,
+        "name": "Hamburgueza",
+        "description": "Hamburgueza Grande",
+        "cost": 40,
+        "price": 20,
+        "ingredients": [
+            {
+                "name": "pan",
+                "quantity": 2,
+                "units": "Unidades"
+            },
+            {
+                "name": "Carne",
+                "quantity": 1,
+                "units": "Unidades"
+            }
+        ]
     }
 ]

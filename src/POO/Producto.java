@@ -27,6 +27,10 @@ public class Producto implements Serializable{
         this.ingredientes = ingredientes;
     }
 
+    public Object [] toVector(){
+        Object obj[] = {this.name, this.price};
+        return obj;
+    }
     public int getId() {
         return id;
     }
@@ -77,7 +81,7 @@ public class Producto implements Serializable{
     
     @Override
     public String toString(){
-        return "Producto: " + this.name + "\t\t Costo: " + this.cost +"\t\t Precio: " + this.price +"\t\t Descripcion: " + this.description +"\n";
+        return this.name;
     }
     
 }
