@@ -1,10 +1,1 @@
-[
-    {
-        "username": "alexizzarevalo",
-        "password": "helloworld"
-    },
-    {
-        "username": "camazariegos",
-        "password": "Pizza"
-    }
-]
+[{"username":"alexizzarevalo","password":"helloworld"},{"username":"admin","password":"admin"},{"username":"camazariegos","password":"Pizza"},{"username":"dnavas","password":"Pizza"}]

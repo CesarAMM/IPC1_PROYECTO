@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.View;
 import restaurant_manager.Cesar_Funciones;
 import restaurant_manager.Consola;
 import restaurant_manager.Restaurant_Manager;
@@ -270,6 +271,7 @@ public final class FrameViews extends JFrame{
         
     }
     
+    //Para crear la ventana de un Producto
     public FrameViews(int fila, int id, String name, float costo, float precio,String descripcion, ArrayList<POO.Ingrediente> ArrayIngredientes){
         this.setTitle("Factura #"+id);
         this.setResizable(false);
@@ -496,7 +498,164 @@ public final class FrameViews extends JFrame{
         });
     }
     
-    
+    //Para crear la ventana de un Usuario
+    public FrameViews(int fila, String user, String pass){
+        this.setTitle("Cliente: " + user);
+        this.setResizable(false);
+        this.setSize(320, 300);
+        this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        PanelGeneral = new Panel(Color.white);
+        this.getContentPane().add(PanelGeneral);
+        FrameUsuario(fila,user, pass);
+    }
+    public void FrameUsuario(int fila, String user, String pass){
+        Label luser = new Label("Usuario:", 10, 10, 80, 20, titleFont, false);
+        PanelGeneral.add(luser);
+        
+        TextBox txtuser = new TextBox(user, 92, 10, 150, 20, titleFont, false);
+        PanelGeneral.add(txtuser);
+        
+        Label lpass1 = new Label("Contraseña:", 10, 40, 100, 20, titleFont, false);
+        Label lpass2 = new Label("Confirme Contraseña:", 10, 65, 150, 20, titleFont, false);
+        lpass1.setVisible(false);
+        lpass2.setVisible(false);
+        PanelGeneral.add(lpass1);
+        PanelGeneral.add(lpass2);
+        TextBoxPass txtpass1 = new TextBoxPass(105,40,100,20,new Font(Font.DIALOG_INPUT, Font.BOLD, 12));
+        TextBoxPass txtpass2 = new TextBoxPass(165,65,100,20,new Font(Font.DIALOG_INPUT, Font.BOLD, 12));
+        txtpass1.setVisible(false);
+        txtpass2.setVisible(false);
+        PanelGeneral.add(txtpass1);
+        PanelGeneral.add(txtpass2);
+        
+        //Creacion de Botones
+        Boton btnEdit = new Boton(20, 120, 35, 35, new Color(58, 255, 0), "img\\ico_edit.png");
+        Boton btnEliminar = new Boton(60, 120, 35, 35, Color.red, "img\\ico_delete.png");
+        Boton btnCancel = new Boton(20, 120, 35, 35, Color.RED, "img\\ico_cancel.png");
+        Boton btnRestablecer = new Boton("Restablecer", 10, 95, 120, 20, new Font(Font.DIALOG_INPUT, Font.BOLD, 12));
+        Boton btnCambio = new Boton("Restablecer Contraseña", 10, 95, 200, 20, new Font(Font.DIALOG_INPUT, Font.BOLD, 12));
+        Boton btnSave = new Boton(60, 120, 35, 35, new Color(58, 255, 0), "img\\ico_save.png");
+        PanelGeneral.add(btnSave);
+        PanelGeneral.add(btnCancel);
+        PanelGeneral.add(btnEliminar);
+        PanelGeneral.add(btnEdit);
+        PanelGeneral.add(btnRestablecer);
+        PanelGeneral.add(btnCambio);
+        btnCancel.setVisible(false);
+        btnSave.setVisible(false);
+        btnCambio.setVisible(false);
+        
+        btnRestablecer.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                btnCambio.setVisible(true);
+                btnRestablecer.setVisible(false);
+                txtpass1.setVisible(true);
+                txtpass2.setVisible(true);
+                lpass1.setVisible(true);
+                lpass2.setVisible(true);
+            }
+        });
+        btnCambio.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                if(!txtpass1.getText().equals("") && !txtpass2.getText().equals("")){
+                    if(txtpass1.getText().equals(txtpass2.getText())){
+                        for (Usuario usuario : Restaurant_Manager.usuarios) {
+                            if(usuario.getUsername().equals(txtuser.getText())){
+                                usuario.setPassword(txtpass1.getText());
+                                JOptionPane.showMessageDialog(null, "Sea Cambiado la contraseña");
+                                btnCambio.setVisible(false);
+                                btnRestablecer.setVisible(true);
+                                txtpass1.setVisible(false);
+                                txtpass2.setVisible(false);
+                                lpass1.setVisible(false);
+                                lpass2.setVisible(false);
+                                Cesar_Funciones.JsonDatos(2);
+                                String strPass = "";
+                                for (int i = 0; i < txtpass1.getText().length(); i++) {
+                                    strPass+="*";
+                                }
+                                Views.PanelesMain.Usuario.dtm.setValueAt(strPass, fila, 1);
+                                break;
+                            }
+                        }
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Error.\nLas Contraseñas no coiciden");
+                        btnCambio.setVisible(false);
+                        btnRestablecer.setVisible(true);
+                        txtpass1.setVisible(false);
+                        txtpass2.setVisible(false);
+                        lpass1.setVisible(false);
+                        lpass2.setVisible(false);
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(null, "Error.\nLlene los campos para restablecer la contraseña.");
+                }
+                txtpass1.setText("");
+                txtpass2.setText("");
+            }
+        });
+        btnEliminar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                for (Usuario usuario : Restaurant_Manager.usuarios) {
+                    if(usuario.getUsername().equals(txtuser.getText())){
+                        Restaurant_Manager.usuarios.remove(usuario);
+                        Cesar_Funciones.JsonDatos(2);
+                        CerrarVentana();
+                        Views.PanelesMain.Usuario.dtm.removeRow(fila);
+                        break;
+                    }
+                }
+            }
+        });
+        btnEdit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                txtuser.setEnabled(true);
+                btnSave.setVisible(true);
+                btnCancel.setVisible(true);
+                btnEdit.setVisible(false);
+                btnEliminar.setVisible(false);
+            }
+        });
+        
+        btnSave.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                if(!txtuser.getText().equals("")){
+                    for (Usuario usuario : Restaurant_Manager.usuarios) {
+                            if(usuario.getUsername().equals(user)){
+                                usuario.setUsername(txtuser.getText());
+                                Cesar_Funciones.JsonDatos(2);
+                                Views.PanelesMain.Usuario.dtm.setValueAt(txtuser.getText(), fila, 0);
+                                break;
+                            }
+                    }
+                    txtuser.setEnabled(false);
+                    btnCancel.setVisible(false);
+                    btnSave.setVisible(false);
+                    btnEdit.setVisible(true);
+                    btnEliminar.setVisible(true);
+                }else{
+                    JOptionPane.showMessageDialog(null, "el campo de usuario no puede ir vacio");
+                }
+            }
+        });
+        
+        btnCancel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                txtuser.setEnabled(false);
+                btnCancel.setVisible(false);
+                btnSave.setVisible(false);
+                btnEdit.setVisible(true);
+                btnEliminar.setVisible(true);
+            }
+        });
+    }
     private void CerrarVentana() {
         this.setVisible(false);
     }

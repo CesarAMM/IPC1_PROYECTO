@@ -77,7 +77,8 @@ public class Main extends JFrame{
         v1.IniciarComponentes_PanelFactura();
         Views.PanelesMain.Producto v2 = new Views.PanelesMain.Producto();
         v2.IniciarComponentes_PanelProducto();
-        Views.PanelesMain.Usuario.IniciarComponentes_PanelUsers();
+        Views.PanelesMain.Usuario v3 = new Usuario();
+        v3.IniciarComponentes_PanelUsers();
     }
     
     private void IniciarComponentesLoguit() {

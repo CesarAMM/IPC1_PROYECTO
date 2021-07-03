@@ -17,6 +17,16 @@ public class TextBoxPass extends JPasswordField{
         this.setFont(font);
         this.setBounds(xpos, ypos, xpix, ypix);
     }
+    
+    public TextBoxPass(int xpos, int ypos, int xpix, int ypix,Font font) {
+        this.xpos = xpos;
+        this.ypos = ypos;
+        this.xpix = xpix;
+        this.ypix = ypix;
+        this.font = font;
+        this.setFont(font);
+        this.setBounds(xpos, ypos, xpix, ypix);
+    }
 
     public int getXpos() {
         return xpos;
