@@ -40,7 +40,16 @@ public class Consola {
         try {
             int i = Integer.parseInt(d);
             return true;
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+    
+    public static boolean ValidarFloat(String d){
+        try {
+            float i = Float.parseFloat(d);
+            return true;
+        } catch (NumberFormatException e) {
             return false;
         }
     }

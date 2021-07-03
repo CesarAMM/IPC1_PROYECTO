@@ -1,6 +1,7 @@
 package POO;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Producto implements Serializable{
     private int id;
@@ -8,7 +9,7 @@ public class Producto implements Serializable{
     private String description;
     private float cost;
     private float price;
-    private Ingrediente ingredientes[];
+    private ArrayList<Ingrediente> ingredients;
 
     public Producto() {
     }
@@ -18,13 +19,13 @@ public class Producto implements Serializable{
         this.price = price;
     }
     
-    public Producto(int id, String name, String description, float cost, float price, Ingrediente[] ingredientes) {
+    public Producto(int id, String name, String description, float cost, float price, ArrayList<Ingrediente> ingredients) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.cost = cost;
         this.price = price;
-        this.ingredientes = ingredientes;
+        this.ingredients = ingredients;
     }
 
     public Object [] toVector(){
@@ -71,14 +72,14 @@ public class Producto implements Serializable{
         this.price = price;
     }
 
-    public Ingrediente[] getIngredientes() {
-        return ingredientes;
+    public ArrayList<Ingrediente> getIngredientes() {
+        return ingredients;
     }
 
-    public void setIngredientes(Ingrediente[] ingredientes) {
-        this.ingredientes = ingredientes;
+    public void setIngredientes(ArrayList<Ingrediente> ingredients) {
+        this.ingredients = ingredients;
     }
-    
+     
     @Override
     public String toString(){
         return this.name;
